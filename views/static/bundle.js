@@ -1,38 +1,6 @@
-require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"PFbx38":[function(require,module,exports){
-var Backbone = require('backbone');
-var $ = require('jquery-untouched');
-Backbone.$ = $;
-
-var Movies = require('collections/movies');
-
-var data = require('../movies.json');
-
-var movies = new Movies(data);
-
-var Monitor = require('./monitor');
-var monitor = new Monitor(movies);
-
-var MovieView = require('views/movie');
-var MoviesList = require('views/moviesList');
-
-module.exports = { movies: movies, MovieView: MovieView, MoviesList: MoviesList };
-
-
-},{"../movies.json":8,"./monitor":3,"backbone":9,"collections/movies":4,"jquery-untouched":10,"views/movie":6,"views/moviesList":7}],"app":[function(require,module,exports){
-module.exports=require('PFbx38');
-},{}],3:[function(require,module,exports){
-var _ = require('underscore');
-var Backbone = require('backbone');
-
-  var Monitor = function(collection) {
-    _.extend(this, Backbone.Events);
-    this.listenTo(collection, 'all', function (eventName) { 
-      console.log(eventName);
-    });
-  }
-  module.exports = Monitor;
-
-},{"backbone":9,"underscore":11}],4:[function(require,module,exports){
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"movies":[function(require,module,exports){
+module.exports=require('MSqWJ4');
+},{}],"MSqWJ4":[function(require,module,exports){
 var Backbone = require('backbone');
 var Movie = require('models/movie');
 var _ = require('underscore');
@@ -56,7 +24,43 @@ var Movies = Backbone.Collection.extend({
 })
 module.exports = Movies;
 
-},{"backbone":9,"models/movie":5,"underscore":11}],5:[function(require,module,exports){
+},{"backbone":13,"models/movie":7,"underscore":15}],"PFbx38":[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery-untouched');
+Backbone.$ = $;
+
+var Movies = require('collections/movies');
+
+var data = require('../movies.json');
+
+var movies = new Movies(data);
+
+var Monitor = require('./monitor');
+var monitor = new Monitor(movies);
+
+var MovieView = require('views/movie');
+var MoviesList = require('views/moviesList');
+
+module.exports = { movies: movies, MovieView: MovieView, MoviesList: MoviesList };
+
+
+},{"../movies.json":12,"./monitor":5,"backbone":13,"collections/movies":6,"jquery-untouched":14,"views/movie":8,"views/moviesList":9}],"app":[function(require,module,exports){
+module.exports=require('PFbx38');
+},{}],5:[function(require,module,exports){
+var _ = require('underscore');
+var Backbone = require('backbone');
+
+  var Monitor = function(collection) {
+    _.extend(this, Backbone.Events);
+    this.listenTo(collection, 'all', function (eventName) { 
+      console.log(eventName);
+    });
+  }
+  module.exports = Monitor;
+
+},{"backbone":13,"underscore":15}],6:[function(require,module,exports){
+module.exports=require("MSqWJ4")
+},{"backbone":13,"models/movie":7,"underscore":15}],7:[function(require,module,exports){
 var Backbone = require("backbone");
   var Movie = Backbone.Model.extend({
     defaults: {
@@ -68,7 +72,7 @@ var Backbone = require("backbone");
   });
   module.exports = Movie;
 
-},{"backbone":9}],6:[function(require,module,exports){
+},{"backbone":13}],8:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery-untouched');
 var _ = require('underscore');
@@ -105,7 +109,7 @@ var MovieView = Backbone.View.extend({
 });
 module.exports = MovieView;
 
-},{"backbone":9,"jquery-untouched":10,"underscore":11}],7:[function(require,module,exports){
+},{"backbone":13,"jquery-untouched":14,"underscore":15}],9:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 
@@ -128,12 +132,16 @@ var MoviesList = Backbone.View.extend({
 });
 module.exports = MoviesList;
 
-},{"backbone":9,"underscore":11,"views/movie":6}],8:[function(require,module,exports){
+},{"backbone":13,"underscore":15,"views/movie":8}],"FTqFvm":[function(require,module,exports){
+module.exports=require(9)
+},{"backbone":13,"underscore":15,"views/movie":8}],"moviesView":[function(require,module,exports){
+module.exports=require('FTqFvm');
+},{}],12:[function(require,module,exports){
 module.exports=[ {"id": 1, "title": "The Artist" },
   {"id": 2, "title": "Taxi Driver"},
   {"id": 3, "title": "La Dolce Vita"} ]
 
-},{}],9:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 //     Backbone.js 1.1.2
 
 //     (c) 2010-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -1743,7 +1751,7 @@ module.exports=[ {"id": 1, "title": "The Artist" },
 
 }));
 
-},{"underscore":11}],10:[function(require,module,exports){
+},{"underscore":15}],14:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.10.2
  * http://jquery.com/
@@ -11534,7 +11542,7 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
 
 })( window );
 
-},{}],11:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 //     Underscore.js 1.6.0
 //     http://underscorejs.org
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
