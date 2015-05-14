@@ -1,27 +1,4 @@
-require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"elJ5b+":[function(require,module,exports){
-var Backbone = require('backbone');
-var $ = require('jquery-untouched');
-Backbone.$ = $;
-
-// model
-var Movie = require('models/movie');
-var movie = new Movie({title: 'The Artist'});
-
-// views
-var MovieView = require('views/movie');
-var movieView;
-
-$(document).ready(function() {
-  movieView = new MovieView({el: $('.movie'), model: movie});
-  movieView.render()
-});
-
-module.exports = {model: movie};
-
-
-},{"backbone":5,"jquery-untouched":6,"models/movie":3,"views/movie":4}],"app":[function(require,module,exports){
-module.exports=require('elJ5b+');
-},{}],3:[function(require,module,exports){
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var Backbone = require("backbone");
   var Movie = Backbone.Model.extend({
     defaults: {
@@ -37,7 +14,7 @@ var Backbone = require("backbone");
   });
   module.exports = Movie;
 
-},{"backbone":5}],4:[function(require,module,exports){
+},{"backbone":3}],2:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery-untouched');
 var _ = require('underscore');
@@ -71,7 +48,7 @@ var MovieView = Backbone.View.extend({
 });
 module.exports = MovieView;
 
-},{"backbone":5,"jquery-untouched":6,"underscore":7}],5:[function(require,module,exports){
+},{"backbone":3,"jquery-untouched":4,"underscore":5}],3:[function(require,module,exports){
 //     Backbone.js 1.1.2
 
 //     (c) 2010-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -1681,7 +1658,7 @@ module.exports = MovieView;
 
 }));
 
-},{"underscore":7}],6:[function(require,module,exports){
+},{"underscore":5}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.10.2
  * http://jquery.com/
@@ -11472,7 +11449,7 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
 
 })( window );
 
-},{}],7:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 //     Underscore.js 1.6.0
 //     http://underscorejs.org
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -12817,4 +12794,24 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
   }
 }).call(this);
 
-},{}]},{},[])
+},{}],"app":[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery-untouched');
+Backbone.$ = $;
+
+// model
+var Movie = require('models/movie');
+var movie = new Movie({title: 'The Artist'});
+
+// views
+var MovieView = require('views/movie');
+var movieView;
+
+$(document).ready(function() {
+  movieView = new MovieView({el: $('.movie'), model: movie});
+  movieView.render()
+});
+
+module.exports = {model: movie};
+
+},{"backbone":3,"jquery-untouched":4,"models/movie":1,"views/movie":2}]},{},[]);

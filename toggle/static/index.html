@@ -2,10 +2,6 @@
   <html>
   <head>
     <link rel="stylesheet" href="style.css" type="text/css">
-    <script src="bundle.js"></script>
-    <script>
-      var app = require('app');
-    </script>
   </head>
   <body>
 	  <p>You can require the Movie model from the devloper console with:</p>
@@ -20,6 +16,12 @@
   
   <article class="movie">
   </article>
+
+  <script src="bundle.js"></script>
+  <script>
+    // The 'app' module is available as external bundle from browserify
+    var app = require('app');
+  </script>
 
   </body>
 </html>
