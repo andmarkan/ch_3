@@ -5,22 +5,39 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js"></script>
-    <script src="bundle.js"></script>
   </head>
   <body>
    <header>
       <a href="/references">All examples</a>
    </header>
    <h1>The app, models and views</h1>
-   <p>In the developer console you can require the different modules: app, Movies, MovieView, MoviesList</p>
+   <p>This example is mainly about getting a feeling for MVC classes with Backbone.js</p>
+   <br>
+   <p>In the <b>developer console</b> you can require the different modules:</p>
+   <code>
+	   app, app.movies, app.Movies, app.MovieView, app.MoviesList
+   </code>
+   <p>The development console is really useful to examine parts of an application. For example, to change state in a model.</p>
+   <p>If you change state of a modle, the view is notified and re-renders.</p>
 
-   <h1>Sample data:</h1>
-   <p>[ {"id": 1, "title": "The Artist" },
-  {"id": 2, "title": "Taxi Driver"},
-  {"id": 3, "title": "La Dolce Vita"} ]</p>
+   <h1>Sandbox setup:</h1>
+   <p>First, you can try to select a movie from the console, i.e. change the "selected" property of the model.</p>
+   <p>Selection can be done on a model with:</p>
+   <code>
+	   movie.set('selected', 1);
+   </code>
+   <p> Selection can be done on a collection with:</p>
+   <code>
+	   movies.selectByID(1);
+   </code>
+   <p> De-selecting can be done on the collection with:  </p>
+   <code>
+	   movies.resetSelected();
+   </code>
 
    <h1>The Movie DOM</h1>
 
+  <script src="app.js"></script>
   <script>
     var app = require('app');
     var movies = app.movies;
