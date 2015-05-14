@@ -5,7 +5,7 @@ var _ = require('underscore');
 var MovieView = Backbone.View.extend({
   tagName: 'article',
   className: 'movie',
-  template: '<h1><%= title %><hr></h1>',
+  template: '<h1><%= title %></h1><hr>',
 
   events: {
     'click': 'selectMovie'
@@ -13,10 +13,10 @@ var MovieView = Backbone.View.extend({
 
   selectMovie: function(ev) {
     ev.preventDefault();
-    // console.log($(ev.currentTarget).html());
     console.log('event on ' + this.model.id);
-    if (!this.model.get('selected')) {
-      this.model.collection.resetSelected();
+    var selected = this.model.get('selected');
+    this.model.collection.resetSelected();
+    if (!selected) {
       this.model.collection.selectByID(this.model.id);
     }
   },

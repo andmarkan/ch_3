@@ -1,6 +1,16 @@
-require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"movies":[function(require,module,exports){
-module.exports=require('MSqWJ4');
-},{}],"MSqWJ4":[function(require,module,exports){
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var _ = require('underscore');
+var Backbone = require('backbone');
+
+  var Monitor = function(collection) {
+    _.extend(this, Backbone.Events);
+    this.listenTo(collection, 'all', function (eventName) { 
+      console.log(eventName);
+    });
+  }
+  module.exports = Monitor;
+
+},{"backbone":7,"underscore":9}],2:[function(require,module,exports){
 var Backbone = require('backbone');
 var Movie = require('models/movie');
 var _ = require('underscore');
@@ -24,43 +34,7 @@ var Movies = Backbone.Collection.extend({
 })
 module.exports = Movies;
 
-},{"backbone":13,"models/movie":7,"underscore":15}],"PFbx38":[function(require,module,exports){
-var Backbone = require('backbone');
-var $ = require('jquery-untouched');
-Backbone.$ = $;
-
-var Movies = require('collections/movies');
-
-var data = require('../movies.json');
-
-var movies = new Movies(data);
-
-var Monitor = require('./monitor');
-var monitor = new Monitor(movies);
-
-var MovieView = require('views/movie');
-var MoviesList = require('views/moviesList');
-
-module.exports = { movies: movies, MovieView: MovieView, MoviesList: MoviesList };
-
-
-},{"../movies.json":12,"./monitor":5,"backbone":13,"collections/movies":6,"jquery-untouched":14,"views/movie":8,"views/moviesList":9}],"app":[function(require,module,exports){
-module.exports=require('PFbx38');
-},{}],5:[function(require,module,exports){
-var _ = require('underscore');
-var Backbone = require('backbone');
-
-  var Monitor = function(collection) {
-    _.extend(this, Backbone.Events);
-    this.listenTo(collection, 'all', function (eventName) { 
-      console.log(eventName);
-    });
-  }
-  module.exports = Monitor;
-
-},{"backbone":13,"underscore":15}],6:[function(require,module,exports){
-module.exports=require("MSqWJ4")
-},{"backbone":13,"models/movie":7,"underscore":15}],7:[function(require,module,exports){
+},{"backbone":7,"models/movie":3,"underscore":9}],3:[function(require,module,exports){
 var Backbone = require("backbone");
   var Movie = Backbone.Model.extend({
     defaults: {
@@ -72,7 +46,7 @@ var Backbone = require("backbone");
   });
   module.exports = Movie;
 
-},{"backbone":13}],8:[function(require,module,exports){
+},{"backbone":7}],4:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery-untouched');
 var _ = require('underscore');
@@ -80,7 +54,7 @@ var _ = require('underscore');
 var MovieView = Backbone.View.extend({
   tagName: 'article',
   className: 'movie',
-  template: '<h1><%= title %><hr></h1>',
+  template: '<h1><%= title %></h1><hr>',
 
   events: {
     'click': 'selectMovie'
@@ -88,10 +62,10 @@ var MovieView = Backbone.View.extend({
 
   selectMovie: function(ev) {
     ev.preventDefault();
-    // console.log($(ev.currentTarget).html());
     console.log('event on ' + this.model.id);
-    if (!this.model.get('selected')) {
-      this.model.collection.resetSelected();
+    var selected = this.model.get('selected');
+    this.model.collection.resetSelected();
+    if (!selected) {
       this.model.collection.selectByID(this.model.id);
     }
   },
@@ -109,7 +83,7 @@ var MovieView = Backbone.View.extend({
 });
 module.exports = MovieView;
 
-},{"backbone":13,"jquery-untouched":14,"underscore":15}],9:[function(require,module,exports){
+},{"backbone":7,"jquery-untouched":8,"underscore":9}],5:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 
@@ -132,16 +106,12 @@ var MoviesList = Backbone.View.extend({
 });
 module.exports = MoviesList;
 
-},{"backbone":13,"underscore":15,"views/movie":8}],"FTqFvm":[function(require,module,exports){
-module.exports=require(9)
-},{"backbone":13,"underscore":15,"views/movie":8}],"moviesView":[function(require,module,exports){
-module.exports=require('FTqFvm');
-},{}],12:[function(require,module,exports){
+},{"backbone":7,"underscore":9,"views/movie":4}],6:[function(require,module,exports){
 module.exports=[ {"id": 1, "title": "The Artist" },
   {"id": 2, "title": "Taxi Driver"},
   {"id": 3, "title": "La Dolce Vita"} ]
 
-},{}],13:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 //     Backbone.js 1.1.2
 
 //     (c) 2010-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -1751,7 +1721,7 @@ module.exports=[ {"id": 1, "title": "The Artist" },
 
 }));
 
-},{"underscore":15}],14:[function(require,module,exports){
+},{"underscore":9}],8:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.10.2
  * http://jquery.com/
@@ -11542,7 +11512,7 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
 
 })( window );
 
-},{}],15:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 //     Underscore.js 1.6.0
 //     http://underscorejs.org
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -12887,4 +12857,28 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
   }
 }).call(this);
 
-},{}]},{},[])
+},{}],"app":[function(require,module,exports){
+var Backbone = require('backbone');
+var $ = require('jquery-untouched');
+Backbone.$ = $;
+
+var Movies = require('collections/movies');
+
+var data = require('../movies.json');
+
+var movies = new Movies(data);
+
+var Monitor = require('./monitor');
+var monitor = new Monitor(movies);
+
+var MovieView = require('views/movie');
+var MoviesList = require('views/moviesList');
+
+module.exports = { movies: movies, MovieView: MovieView, MoviesList: MoviesList };
+
+
+},{"../movies.json":6,"./monitor":1,"backbone":7,"collections/movies":2,"jquery-untouched":8,"views/movie":4,"views/moviesList":5}],"moviesView":[function(require,module,exports){
+arguments[4][5][0].apply(exports,arguments)
+},{"backbone":7,"dup":5,"underscore":9,"views/movie":4}],"movies":[function(require,module,exports){
+arguments[4][2][0].apply(exports,arguments)
+},{"backbone":7,"dup":2,"models/movie":3,"underscore":9}]},{},[]);
